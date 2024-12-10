@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">ChefPal</string>
+    <string name="title_home">Home</string>
+    <string name="title_recipe">Recipe</string>
+    <string name="title_favorites">Favorites</string>
+
+    <!-- home page -->
+    <string name="ingredients_hint">Enter ingredients</string>
+    <string name="home_button_text">Start Cooking</string>
+
+    <!-- recipe page -->
+    <string name="favorite_button_text">Favorite Recipe</string>
+    <string name="unfavorite_button_text">Unfavorite Recipe</string>
+
+    <!-- favorites page -->
+    <string name="no_recipe_placeholder">No Recipes Favorited</string>
+
+    <!-- card cell template -->
+    <string name="name_place_holder">Place Holder Text</string>
+    <string name="description_placeholder">Description Placeholder</string>
+    <string name="recipe_placeholder">Recipe Placeholder</string>
+</resources>
