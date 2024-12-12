@@ -29,7 +29,7 @@ class HomeViewModel : ViewModel() {
     private val client = OkHttpClient()
 
     private fun getResponse(question: String) {
-        val apiKey="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"
+        val apiKey="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"
         val url="https://api.openai.com/v1/completions"
 
         val requestBody="""
