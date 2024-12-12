@@ -3,6 +3,7 @@
     <string name="title_home">Home</string>
     <string name="title_recipe">Recipe</string>
     <string name="title_favorites">Favorites</string>
+    <string name="title_settings">Settings</string>
 
     <!-- home page -->
     <string name="ingredients_hint">Enter ingredients</string>
@@ -12,11 +13,14 @@
     <string name="favorite_button_text">Favorite Recipe</string>
     <string name="unfavorite_button_text">Unfavorite Recipe</string>
 
-    <!-- favorites page -->
-    <string name="no_recipe_placeholder">No Recipes Favorited</string>
-
-    <!-- card cell template -->
+    <!-- recipe card template-->
     <string name="name_place_holder">Place Holder Text</string>
     <string name="description_placeholder">Description Placeholder</string>
     <string name="recipe_placeholder">Recipe Placeholder</string>
+
+    <!-- favorites page -->
+    <string name="no_recipe_placeholder">No Recipes Favorited</string>
+
+    <!-- settings page-->
+    <string name="hint_food_limitations">Enter food limitations</string>
 </resources>

@@ -68,7 +68,18 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="C:\Users\joshp\AppData\Local\Temp\ic_android_black_24dp.xml" />
+                                                <entry key="imagePath" value="C:\Users\joshp\AppData\Local\Temp\baseline_settings_24.xml" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
+                                      <entry key="foregroundClipartAsset">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="url" value="jar:file:/C:/Users/joshp/AppData/Roaming/JetBrains/IdeaIC2024.3/plugins/android/lib/android.jar!/images/material/icons/materialicons/settings/baseline_settings_24.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -81,7 +92,7 @@
                                               <map>
                                                 <entry key="color" value="000000" />
                                                 <entry key="imagePath" value="C:\Users\joshp\Downloads\logo.png" />
-                                                <entry key="scalingPercent" value="125" />
+                                                <entry key="scalingPercent" value="129" />
                                               </map>
                                             </option>
                                           </PersistentState>

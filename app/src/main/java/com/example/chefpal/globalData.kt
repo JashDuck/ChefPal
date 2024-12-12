@@ -8,6 +8,8 @@ var curRecipe: Recipe? = null
 val favoritesList: MutableList<Recipe> = mutableListOf()
 val recipeList: MutableList<Recipe> = mutableListOf()
 
+var foodLimitationsText: String = ""
+
 data class Recipe (
     val name: String,
     val description: String,

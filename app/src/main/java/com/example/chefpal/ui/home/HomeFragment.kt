@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -37,17 +36,16 @@ class HomeFragment : Fragment(), CardClickListener {
             layoutManager = LinearLayoutManager(context)
             adapter = CardAdapter(recipeList, homeFragment)
         }
-
-        // send this text to gpt api
         val ingredientsText = binding.ingredientsText.text
-        val prompt = "Using these ingredients: $ingredientsText, create a delicious recipe"
-
-
+        val prompt = if (foodLimitationsText == "")
+            "Using these ingredients: $ingredientsText, create a delicious recipe making sure to avoid these ingredients: $foodLimitationsText"
+        else
+            "Using these ingredients: $ingredientsText, create a delicious recipe"
 
         val ingredientsButton: Button = binding.ingredientsButton
 
         ingredientsButton.setOnClickListener {
-            recipeList.add(Recipe("A Recipe", "This is the most splendorous recipe to exist", "this is the actual recipe that you will never see unless this gets clicked you monkey", false))
+            homeViewModel.generateRecipes(binding, 1)
             binding.recyclerView.adapter?.notifyItemInserted(recipeList.size - 1)
         }
 
