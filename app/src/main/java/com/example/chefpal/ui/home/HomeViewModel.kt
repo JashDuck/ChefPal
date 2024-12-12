@@ -34,6 +34,7 @@ class HomeViewModel : ViewModel() {
 
         val requestBody="""
             {
+            "model": "gpt-3.5-turbo-instruct",
             "prompt": "$question",
             "max_tokens": 500,
             "temperature": 0
