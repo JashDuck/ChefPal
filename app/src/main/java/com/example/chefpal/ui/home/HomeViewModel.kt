@@ -1,9 +1,12 @@
 package com.example.chefpal.ui.home
 
+import android.app.Activity
 import android.util.Log
 import androidx.lifecycle.ViewModel
+import com.example.chefpal.Recipe
 import com.example.chefpal.databinding.FragmentHomeBinding
 import com.example.chefpal.foodLimitationsText
+import com.example.chefpal.recipeList
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -11,25 +14,34 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody.Companion.toRequestBody
 import okhttp3.Response
+import org.json.JSONArray
+import org.json.JSONObject
 import java.io.IOException
 
 class HomeViewModel : ViewModel() {
-    fun generateRecipes(binding: FragmentHomeBinding, num:Int) {
+    fun generateRecipes(binding: FragmentHomeBinding, activity: Activity, num:Int) {
         val ingredientsText = binding.ingredientsText.text
         val prompt = if (foodLimitationsText.isNotEmpty())
-            "Using the ingredient/s $ingredientsText, create a delicious recipe while making sure to avoid these ingredients: $foodLimitationsText"
+            "Using the ingredient/s $ingredientsText, create a delicious recipe while making sure to avoid these ingredients: $foodLimitationsText, in the format: name;description;recipe"
         else
-            "Using the ingredient/s $ingredientsText, create a delicious recipe"
+            "Using the ingredient/s $ingredientsText, create a delicious recipe in the format: name;description;recipe"
 
         repeat(num) {
-            getResponse(prompt)
+            if (prompt.isNotEmpty()) {
+                getResponse(prompt) { response ->
+                    activity.runOnUiThread {
+                        val splitResponse = response.split(";")
+                        recipeList.add(Recipe(splitResponse[0], splitResponse[1], splitResponse[2], false))
+                    }
+                }
+            }
         }
     }
 
     private val client = OkHttpClient()
 
-    private fun getResponse(question: String) {
-        val apiKey="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"
+    private fun getResponse(question: String, callback: (String) -> Unit) {
+        val apiKey="Add openai API key here"
         val url="https://api.openai.com/v1/completions"
 
         val requestBody="""
@@ -54,10 +66,13 @@ class HomeViewModel : ViewModel() {
             }
 
             override fun onResponse(call: Call, response: Response) {
-                val body=response.body?.string()
-                if (body != null)
-                    Log.v("data", body)
-                else
+                val body = response.body?.string()
+                if (body != null) {
+                    val jsonObject = JSONObject(body)
+                    val jsonArray: JSONArray = jsonObject.getJSONArray("choices")
+                    val textResult = jsonArray.getJSONObject(0).getString("text")
+                    callback(textResult)
+                } else
                     Log.v("data", "empty")
             }
         })

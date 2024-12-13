@@ -36,16 +36,11 @@ class HomeFragment : Fragment(), CardClickListener {
             layoutManager = LinearLayoutManager(context)
             adapter = CardAdapter(recipeList, homeFragment)
         }
-        val ingredientsText = binding.ingredientsText.text
-        val prompt = if (foodLimitationsText == "")
-            "Using these ingredients: $ingredientsText, create a delicious recipe making sure to avoid these ingredients: $foodLimitationsText"
-        else
-            "Using these ingredients: $ingredientsText, create a delicious recipe"
 
         val ingredientsButton: Button = binding.ingredientsButton
 
         ingredientsButton.setOnClickListener {
-            homeViewModel.generateRecipes(binding, 1)
+            activity?.let { it1 -> homeViewModel.generateRecipes(binding, it1,1) }
             binding.recyclerView.adapter?.notifyItemInserted(recipeList.size - 1)
         }
 

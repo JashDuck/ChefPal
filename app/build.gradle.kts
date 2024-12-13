@@ -52,7 +52,8 @@ dependencies {
     // test dependencies
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
+    //noinspection GradleDependency
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.0")
 
     // ai dependencies
     implementation("com.squareup.okhttp3:okhttp:4.12.0")

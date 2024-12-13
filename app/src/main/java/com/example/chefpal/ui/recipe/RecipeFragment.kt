@@ -12,12 +12,8 @@ import com.example.chefpal.databinding.FragmentRecipeBinding
 
 class RecipeFragment : Fragment() {
 
-    private var recipeID: Int? = null
     private var _binding: FragmentRecipeBinding? = null
 
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
