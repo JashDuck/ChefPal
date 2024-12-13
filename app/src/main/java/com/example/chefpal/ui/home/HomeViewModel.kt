@@ -41,7 +41,8 @@ class HomeViewModel : ViewModel() {
     private val client = OkHttpClient()
 
     private fun getResponse(question: String, callback: (String) -> Unit) {
-        val apiKey="Add openai API key here"
+        // enter your api key here
+        val apiKey=""
         val url="https://api.openai.com/v1/completions"
 
         val requestBody="""
